@@ -10,26 +10,29 @@ customer questions and automate responses to them, simulating human conversation
  
  It previously supported only PyTorch, but, as of late 2019, TensorFlow 2 is supported as well)
  
- #Steps:
+ # Steps:
  
-  ## First, download a pretrained model, we  used a pretrained chatbot model, DialoGPT, BlenderBot
+  1- First, download a pretrained model, we  used a pretrained chatbot model, DialoGPT, BlenderBot
  and its tokenizer from the Hugging Face Hub, also  you can replace this with your own model
  
-  ## Next,  defined a function(predect) that takes in the user input as well as the previous chat history to generate a response.
- 
-history: which represents the state, consisting of the list of user and bot responses.
-To create a stateful Gradio demo, we must pass in a parameter to represent the state, and we set the default value of this parameter to be the initial
+  2- Next,  defined a function(predect) that takes in the user input as well as the previous chat history to generate a response.
+  
+  
+  input: which is what the user enters (through the Gradio GUI) in a particular step of the conversation.
+  
+  history: which represents the state, consisting of the list of user and bot responses.
+  To create a stateful Gradio demo, we must pass in a parameter to represent the state, and we set the default value of this parameter to be the initial
 
-value of the state (in this case, the empty list since this is what we would like the chat history to be at the start).
+  value of the state (in this case, the empty list since this is what we would like the chat history to be at the start).
 
-Then, the function tokenizes the input and concatenates it with the tokens corresponding to the previous user and bot responses.
+  Then, the function tokenizes the input and concatenates it with the tokens corresponding to the previous user and bot responses.
 
-response: which is a list of tuples of strings corresponding to all of the user and bot responses. This will be rendered as the output in the Gradio demo.
-history variable, which is the token representation of all of the user and bot responses. 
+ response: which is a list of tuples of strings corresponding to all of the user and bot responses. This will be rendered as the output in the Gradio demo.
+  history variable, which is the token representation of all of the user and bot responses. 
 
-In stateful Gradio demos, we must return the updated state at the end of the function.
+   In stateful Gradio demos, we must return the updated state at the end of the function.
 
- ## FINALLy,create a Gradio Interface around it.
+3- FINALLy,create a Gradio Interface around it.
 
 for more details :
    https://www.gradio.app/creating_a_chatbot/
